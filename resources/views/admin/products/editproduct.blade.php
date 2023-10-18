@@ -1,0 +1,134 @@
+@extends('admin.layouts.template')
+
+@section('title', 'Edit Product - STIT Management')
+
+@section('content')
+<div class="col-6" style="margin: auto; padding: 40px;">
+            @foreach($errors->all() as $error)
+            <li class="text-white alert alert-danger">{{ $error }}</li>
+            @endforeach
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h3 class="card-title text-white font-weight-bold">Edit Product</h3>
+        </div>
+        <form method="POST" action="{{route('updateproduct', $product->id)}}"
+            enctype="multipart/form-data">
+          @method('PUT')
+          @csrf
+            <div class="card-body">
+
+                <div class="form-group">
+                    <label for="usine">Usine</label>
+                    <select class="form-control select2" style="width: 100%;" name="usine">
+                        <option value="{{$product->usine}}" selected="selected">{{$product->usine}}</option>
+                        <option value="Usine1">Usine 1</option>
+                        <option value="Usine2">Usine 2</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="references">Référance</label>
+                    <input type="text" class="form-control" id="references" name="references"
+                        placeholder="Enter référance" value="{{$product->references}}">
+                </div>
+                <div class="form-group">
+                    <label>Article</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Margoum/sajad/TapisChambre! ..." name="design" value="{{$product->design}}">
+                    </div>
+                </div>
+             
+                <div class="form-group">
+                    <label>Taille</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="160/220 / 3 piéces! ..." name="size" value="{{$product->size}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Couleur</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Gold / Rouge / noir ..." name="color" value="{{$product->color}}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Quantité en Stock</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Add Quantity" name="inQty" value="{{$product->inQty}}">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-check"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Quantité Vendue</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Enter Qty" name="outQty" value="{{$product->outQty}}">
+                        <div class="input-group-append">
+                            <div class="input-group-text"><i class="fas fa-ambulance"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Date de fabrication</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="JJ/MM/AAAA" name="date" value="{{$product->date}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Product Image </label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-images"></i></span>
+                        </div>
+                        <input type="file" class="form-control" name="image">
+                    </div>
+                </div>
+                <div class="md:flex sm:block w-100">
+
+                    @if (Storage::exists("public/".$product->image))
+                        <div>
+                            <label class="block mt-3 mb-2 text-md font-medium text-gray-900">Image
+                                product :</label>
+                            <div class="rounded ">
+                                <div
+                                    class=" justify-center flex px-5 border-dashed border-2 border-gray-400 rounded-lg">
+                                    <div class="-m-1 flex w-64 py-4 flex-wrap md:-m-2">
+
+                                        <div class="w-1/3 p-1 md:p-2">
+                                            <img
+                                                class="block w-100 rounded-lg object-cover object-center"
+                                                src="{{ asset('storage/' . $product->image) }}"
+                                                alt="product Logo"/>
+                                            <div class="flex items-center mr-4">
+                                                <input id="red-checkbox" type="checkbox"
+                                                       name="delete_images"
+                                                       value="{{ $product->image }}"
+                                                       class="w-4 h-4 mt-2 text-red-600 bg-gray-100 border-gray-200 rounded focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
+                                                <label for="red-checkbox"
+                                                       class="ml-2 mt-2 text-sm font-medium text-gray-100 dark:text-gray-700">Delete</label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+
+</div>
+                <div class="d-flex justify-content-end p-2">
+                    <button type="submit" class="btn btn-secondary font-weight-bold">Update</button>
+                </div>
+                
+            </div>
+          
+        </form>
+        
+    </div>
+</div>
+@endsection
