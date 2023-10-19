@@ -1,22 +1,22 @@
 @extends('admin.layouts.template')
 @section('title')
-    S.T.I.T Bobine Management
+    S.T.I.T Rebobine Management
 @endsection
 @section('content')
 
-<div style="padding: 10px 150px">
+<div style="padding: 10px 180px">
     <!-- Content Header (Page header) -->
     <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
         <div class="col-sm-6">
-            <h1>All Bobines</h1>
+            <h1>All Rebobines</h1>
         </div>
 
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <button type="button" class="btn btn-primary">
-                    <a href="{{route('addbobine')}}" style="text-decoration: none;color: white;">Add Bobine</a>
+                    <a href="{{route('addrebobine')}}" style="text-decoration: none;color: white;">Add Rebobine</a>
                 </button>
             </ol>
         </div>
@@ -29,25 +29,17 @@
     {{ session()->get('message') }}
     </div>
     @endif
-<div class="card">
+<div class="card " style="padding: 10px">
+
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h3 class="card-title text-center p-2">Bobines Managment</h3>
+        <h3 class="card-title text-center p-2">Rebobines Managment</h3>
     </div>
     
     
     <!-- /.card-header -->
     <div class="card-body">
         <div class="row">
-            <div class="col-md-4">
-            <div class="form-group">
-                <label for="usine">Usine:</label>
-                <select id="usine" class="form-control">
-                    <option value="">Tous</option>
-                    <!-- Ajoutez ici les options d'usine dynamiquement -->
-                </select>
-            </div>
-        </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="form-group">
                 <label for="references">References:</label>
                 <select id="references" class="form-control">
@@ -56,7 +48,7 @@
                 </select>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="form-group">
                 <label for="color">Couleur:</label>
                 <select id="color" class="form-control">
@@ -65,13 +57,12 @@
                 </select>
             </div>
         </div>
-        
     </div>
-    <table id="bobine" class="table table-bordered table-striped">
+    </div>
+    <table id="rebobine" class="table table-bordered table-striped">
     <thead>
         <tr>
         <th>ID</th>
-        <th>Usine</th>
         <th>Référence</th>
         <th>Couleur</th>
         <th>Type</th>
@@ -83,22 +74,21 @@
         </tr>
     </thead>
         <tbody>
-            @foreach($bobines as $bobine)
+            @foreach($rebobines as $rebobine)
         <tr>
-        <td>{{$bobine->id}}</td>
-        <td>{{$bobine->usine}}</td>
-        <td>{{$bobine->references}}</td>
-        <td>{{$bobine->color}}</td>
-        <td class="text-center">{{$bobine->type}}</td>
-        <td class="text-center">{{$bobine->inQty}} KG</td>
-        <td class="text-center">{{$bobine->outQty}} KG</td>
-        <td style="color: {{ $bobine->status === 'Epuisé' ? 'red' : 'green' }};" class="font-weight-bold ">{{ $bobine->status }}</td>
-        <td class="text-center">{{{$bobine->date}}}</td>
+        <td>{{$rebobine->id}}</td>
+        <td>{{$rebobine->references}}</td>
+        <td>{{$rebobine->color}}</td>
+        <td class="text-center">{{$rebobine->type}}</td>
+        <td class="text-center">{{$rebobine->inQty}} KG</td>
+        <td class="text-center">{{$rebobine->outQty}} KG</td>
+        <td style="color: {{ $rebobine->status === 'Epuisé' ? 'red' : 'green' }};" class="font-weight-bold ">{{ $rebobine->status }}</td>
+        <td class="text-center">{{{$rebobine->date}}}</td>
         <td class="text-center">
         <span class="dtr-data">
-            <a class="mr-1" href="{{route('showbobine',$bobine->id)}}"> <i class="nav icon far fa-eye fa-lg text-black"></i></a>   
-            <a class="mr-1" href="{{route('editbobine',$bobine->id)}}"> <i class="nav-icon fas fa-edit fa-lg text-green"></i></a>
-            <a href="{{route('deletebobine',$bobine->id)}}"
+            <a class="mr-1" href="{{route('showrebobine',$rebobine->id)}}"> <i class="nav icon far fa-eye fa-lg text-black"></i></a>   
+            <a class="mr-1" href="{{route('editrebobine',$rebobine->id)}}"> <i class="nav-icon fas fa-edit fa-lg text-green"></i></a>
+            <a href="{{route('deleterebobine',$rebobine->id)}}"
                 onclick="return confirm('Are you sure you want to delete this item?');">
                 <i class="far fa-trash-alt fa-lg text-red"></i>
             </a>
@@ -111,10 +101,11 @@
     </div>
     </div>
 </div>
+
 <script>
 $(document).ready(function () {
       // Initialisation de la DataTable
-    var table = $('#bobine').DataTable({
+    var table = $('#rebobine').DataTable({
     "responsive": true,
     "lengthChange": false,
     "autoWidth": false,
@@ -122,31 +113,31 @@ $(document).ready(function () {
         {
             extend: 'copy',
             exportOptions: {
-                columns: [1, 2, 3, 4, 5, 6, 7, 8]
+                columns: [1, 2, 3, 4, 5, 6, 7]
             }
         },
         {
             extend: 'csv',
             exportOptions: {
-                columns: [1, 2, 3, 4, 5, 6, 7, 8]
+                columns: [1, 2, 3, 4, 5, 6, 7]
             }
         },
         {
             extend: 'excel',
             exportOptions: {
-                columns: [1, 2, 3, 4, 5, 6, 7, 8]
+                columns: [1, 2, 3, 4, 5, 6, 7]
             }
         },
         {
             extend: 'pdf',
             exportOptions: {
-                columns: [1, 2, 3, 4, 5, 6, 7, 8]
+                columns: [1, 2, 3, 4, 5, 6, 7]
             }
         },
         {
             extend: 'print',
             exportOptions: {
-                columns: [1, 2, 3, 4, 5, 6, 7, 8]
+                columns: [1, 2, 3, 4, 5, 6, 7]
             }
         },
         {
@@ -155,18 +146,18 @@ $(document).ready(function () {
     ]
 });
 
-    table.buttons().container().appendTo($('#bobine_wrapper .col-md-6:eq(0)'));
+    table.buttons().container().appendTo($('#rebobine_wrapper .col-md-6:eq(0)'));
 
       // Remplissage des options de references, couleur et usine
     let referencesOptions = [];
     let colorOptions = [];
-    let usineOptions = [];
+
 
       // Parcourez les produits pour extraire les options de references, color et usine
-    @foreach($bobines as $bobine)
-        var references = "{{$bobine->references}}";
-        var color = "{{$bobine->color}}";
-        var usine = "{{$bobine->usine}}";
+    @foreach($rebobines as $rebobine)
+        var references = "{{$rebobine->references}}";
+        var color = "{{$rebobine->color}}";
+
 
         if (!referencesOptions.includes(references) && references !== "") {
             referencesOptions.push(references);
@@ -176,9 +167,6 @@ $(document).ready(function () {
             colorOptions.push(color);
         }
 
-        if (!usineOptions.includes(usine) && usine !== "") {
-            usineOptions.push(usine);
-        }
     @endforeach
 
       // Remplissez les options dans les sélecteurs
@@ -198,30 +186,17 @@ $(document).ready(function () {
         }));
     });
 
-    var usineSelector = $('#usine');
-    usineOptions.forEach(function (option) {
-        usineSelector.append($('<option>', {
-            value: option,
-            text: option
-        }));
-    });
-    
-
       // Écoutez les changements dans les sélecteurs de references, color et usine
     referencesSelector.on('change', function () {
         var referencesValue = this.value;
-        table.columns(2).search(referencesValue).draw();
+        table.columns(1).search(referencesValue).draw();
     });
 
     colorSelector.on('change', function () {
         var colorValue = this.value;
-        table.columns(3).search(colorValue).draw();
+        table.columns(2).search(colorValue).draw();
     });
 
-    usineSelector.on('change', function () {
-        var usineValue = this.value;
-        table.columns(1).search(usineValue).draw();
-    });
 })
 </script>
 @endsection

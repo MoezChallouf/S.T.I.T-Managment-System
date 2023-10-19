@@ -39,6 +39,15 @@
     <div class="card-body">
       <div class="row">
         <div class="col-md-4">
+          <div class="form-group">
+              <label for="usine">Usine:</label>
+              <select id="usine" class="form-control">
+                  <option value="">Tous</option>
+                  <!-- Ajoutez ici les options d'usine dynamiquement -->
+              </select>
+          </div>
+      </div>
+        <div class="col-md-4">
             <div class="form-group">
                 <label for="taille">Taille:</label>
                 <select id="taille" class="form-control">
@@ -56,15 +65,7 @@
                 </select>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="usine">Usine:</label>
-                <select id="usine" class="form-control">
-                    <option value="">Tous</option>
-                    <!-- Ajoutez ici les options d'usine dynamiquement -->
-                </select>
-            </div>
-        </div>
+        
       </div>
       <table id="product" class="table table-bordered table-striped">
         <thead>

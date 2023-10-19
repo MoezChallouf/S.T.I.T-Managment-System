@@ -10,7 +10,7 @@
         <div class="row  >
             <div class="col-lg-4 col-md-5 xs-margin-30px-bottom">
                 <div class="team-single-img">
-                    <img src="{{asset('dist/img/piece.jpg')}}" alt="logo" style="width: 480px; height:480px; padding-right:50px;" >
+                    <img src="{{asset('dist/img/piece.jpg')}}" alt="logo" style="width: 480px; height:350px; padding-right:50px;" >
                 </div>
             </div>
         

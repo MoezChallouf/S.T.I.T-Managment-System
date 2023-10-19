@@ -1,14 +1,20 @@
 <?php
+use App\Http\Controllers\Admin\AdhesiveController;
 use App\Http\Controllers\Admin\AttendenceController;
 use App\Http\Controllers\admin\BobineController;
+use App\Http\Controllers\admin\ReBobineController;
 use App\Http\Controllers\Admin\ElectricienController;
 use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\FrangesController;
 use App\Http\Controllers\Admin\MecanicienController;
 use App\Http\Controllers\Admin\PieceController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\Admin\QuincaillerieController;
 use App\Http\Controllers\Admin\TourneurController;
+use App\Http\Controllers\Admin\TicketController;
+use App\Models\Adhesive;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +59,16 @@ Route::controller(BobineController::class)->group(function () {
     Route::put('/admin/update-bobine/{id}', 'UpdateBobine')->name('updatebobine');
     Route::get('/admin/show-bobine/{id}', 'ShowBobine')->name('showbobine');
 });
+Route::controller(RebobineController::class)->group(function () {
+    Route::get('/admin/all-rebobines', 'Index')->name('allrebobines');
+    Route::get('/admin/add-rebobine', 'AddRebobine')->name('addrebobine');
+    Route::post('/admin/store-rebobine', 'StoreRebobine')->name('storerebobine');
+    Route::get('/admin/edit-rebobine/{id}', 'EditRebobine')->name('editrebobine');
+    Route::get('/admin/delete-rebobine/{id}', 'DeleteRebobine')->name('deleterebobine');
+    Route::put('/admin/update-rebobine/{id}', 'UpdateRebobine')->name('updaterebobine');
+    Route::get('/admin/show-rebobine/{id}', 'ShowRebobine')->name('showrebobine');
+});
+
 Route::controller(EmployeeController::class)->group(function () {
     Route::get('/admin/all-employees', 'Index')->name('allemployees');
     Route::get('/admin/add-employee', 'AddEmployee')->name('addemployee');
@@ -116,7 +132,33 @@ Route::controller(PieceController::class)->group(function () {
     Route::put('/admin/update-piece/{id}', 'UpdatePiece')->name('updatepiece');
     Route::get('/admin/show-piece/{id}', 'ShowPiece')->name('showpiece');
 });
+Route::controller(TicketController::class)->group(function () {
+    Route::get('/admin/all-tickets', 'Index')->name('alltickets');
+    Route::get('/admin/add-ticket', 'AddTicket')->name('addticket');
+    Route::post('/admin/store-ticket', 'StoreTicket')->name('storeticket');
+    Route::get('/admin/edit-ticket/{id}', 'EditTicket')->name('editticket');
+    Route::get('/admin/delete-ticket/{id}', 'DeleteTicket')->name('deleteticket');
+    Route::put('/admin/update-ticket/{id}', 'UpdateTicket')->name('updateticket');
+    Route::get('/admin/show-ticket/{id}', 'ShowTicket')->name('showticket');
+});
+Route::controller(AdhesiveController::class)->group(function () {
+    Route::get('/admin/all-adhesives', 'Index')->name('alladhesives');
+    Route::get('/admin/add-adhesive', 'AddAdhesive')->name('addadhesive');
+    Route::post('/admin/store-adhesive', 'StoreAdhesive')->name('storeadhesive');
+    Route::get('/admin/edit-adhesive/{id}', 'EditAdhesive')->name('editadhesive');
+    Route::get('/admin/delete-adhesive/{id}', 'DeleteAdhesive')->name('deleteadhesive');
+    Route::put('/admin/update-adhesive/{id}', 'UpdateAdhesive')->name('updateadhesive');
+    Route::get('/admin/show-adhesive/{id}', 'ShowAdhesive')->name('showadhesive');
+});
 
-
+Route::controller(FrangesController::class)->group(function () {
+    Route::get('/admin/all-franges', 'Index')->name('allfranges');
+    Route::get('/admin/add-frange', 'AddFrange')->name('addfrange');
+    Route::post('/admin/store-frange', 'StoreFrange')->name('storefrange');
+    Route::get('/admin/edit-frange/{id}', 'EditFrange')->name('editfrange');
+    Route::get('/admin/delete-frange/{id}', 'DeleteFrange')->name('deletefrange');
+    Route::put('/admin/update-frange/{id}', 'UpdateFrange')->name('updatefrange');
+    Route::get('/admin/show-frange/{id}', 'ShowFrange')->name('showfrange');
+});
 
 require __DIR__.'/auth.php';

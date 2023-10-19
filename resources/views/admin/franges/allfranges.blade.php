@@ -1,6 +1,6 @@
 @extends('admin.layouts.template')
 @section('title')
-    S.T.I.T Bobine Management
+    S.T.I.T Frange Management
 @endsection
 @section('content')
 
@@ -10,13 +10,13 @@
     <div class="container-fluid">
         <div class="row mb-2">
         <div class="col-sm-6">
-            <h1>All Bobines</h1>
+            <h1>All franges</h1>
         </div>
 
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <button type="button" class="btn btn-primary">
-                    <a href="{{route('addbobine')}}" style="text-decoration: none;color: white;">Add Bobine</a>
+                    <a href="{{route('addfrange')}}" style="text-decoration: none;color: white;">Add Frange</a>
                 </button>
             </ol>
         </div>
@@ -31,7 +31,7 @@
     @endif
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h3 class="card-title text-center p-2">Bobines Managment</h3>
+        <h3 class="card-title text-center p-2">Franges Managment</h3>
     </div>
     
     
@@ -67,14 +67,14 @@
         </div>
         
     </div>
-    <table id="bobine" class="table table-bordered table-striped">
+    <table id="frange" class="table table-bordered table-striped">
     <thead>
         <tr>
         <th>ID</th>
         <th>Usine</th>
         <th>Référence</th>
         <th>Couleur</th>
-        <th>Type</th>
+        <th class="text-center">Etat</th>
         <th>Quantité Disponible En KG</th>
         <th>Quantité Consommée En KG</th>
         <th>Status</th>
@@ -83,22 +83,22 @@
         </tr>
     </thead>
         <tbody>
-            @foreach($bobines as $bobine)
+            @foreach($franges as $frange)
         <tr>
-        <td>{{$bobine->id}}</td>
-        <td>{{$bobine->usine}}</td>
-        <td>{{$bobine->references}}</td>
-        <td>{{$bobine->color}}</td>
-        <td class="text-center">{{$bobine->type}}</td>
-        <td class="text-center">{{$bobine->inQty}} KG</td>
-        <td class="text-center">{{$bobine->outQty}} KG</td>
-        <td style="color: {{ $bobine->status === 'Epuisé' ? 'red' : 'green' }};" class="font-weight-bold ">{{ $bobine->status }}</td>
-        <td class="text-center">{{{$bobine->date}}}</td>
+        <td>{{$frange->id}}</td>
+        <td>{{$frange->usine}}</td>
+        <td>{{$frange->references}}</td>
+        <td class="text-center">{{$frange->color}}</td>
+        <td class="text-center">{{$frange->frange}}</td>
+        <td class="text-center">{{$frange->inQty}} KG</td>
+        <td class="text-center">{{$frange->outQty}} KG</td>
+        <td style="color: {{ $frange->status === 'Epuisé' ? 'red' : 'green' }};" class="font-weight-bold ">{{ $frange->status }}</td>
+        <td class="text-center">{{{$frange->date}}}</td>
         <td class="text-center">
         <span class="dtr-data">
-            <a class="mr-1" href="{{route('showbobine',$bobine->id)}}"> <i class="nav icon far fa-eye fa-lg text-black"></i></a>   
-            <a class="mr-1" href="{{route('editbobine',$bobine->id)}}"> <i class="nav-icon fas fa-edit fa-lg text-green"></i></a>
-            <a href="{{route('deletebobine',$bobine->id)}}"
+            <a class="mr-1" href="{{route('showfrange',$frange->id)}}"> <i class="nav icon far fa-eye fa-lg text-black"></i></a>   
+            <a class="mr-1" href="{{route('editfrange',$frange->id)}}"> <i class="nav-icon fas fa-edit fa-lg text-green"></i></a>
+            <a href="{{route('deletefrange',$frange->id)}}"
                 onclick="return confirm('Are you sure you want to delete this item?');">
                 <i class="far fa-trash-alt fa-lg text-red"></i>
             </a>
@@ -114,7 +114,7 @@
 <script>
 $(document).ready(function () {
       // Initialisation de la DataTable
-    var table = $('#bobine').DataTable({
+    var table = $('#frange').DataTable({
     "responsive": true,
     "lengthChange": false,
     "autoWidth": false,
@@ -155,7 +155,7 @@ $(document).ready(function () {
     ]
 });
 
-    table.buttons().container().appendTo($('#bobine_wrapper .col-md-6:eq(0)'));
+    table.buttons().container().appendTo($('#frange_wrapper .col-md-6:eq(0)'));
 
       // Remplissage des options de references, couleur et usine
     let referencesOptions = [];
@@ -163,10 +163,10 @@ $(document).ready(function () {
     let usineOptions = [];
 
       // Parcourez les produits pour extraire les options de references, color et usine
-    @foreach($bobines as $bobine)
-        var references = "{{$bobine->references}}";
-        var color = "{{$bobine->color}}";
-        var usine = "{{$bobine->usine}}";
+    @foreach($franges as $frange)
+        var references = "{{$frange->references}}";
+        var color = "{{$frange->color}}";
+        var usine = "{{$frange->usine}}";
 
         if (!referencesOptions.includes(references) && references !== "") {
             referencesOptions.push(references);
