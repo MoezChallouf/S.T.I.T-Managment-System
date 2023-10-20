@@ -70,7 +70,7 @@ $('#reservationdate').datetimepicker({
     <ul class="navbar-nav" style="margin-left: auto;">
       
     
-      <li class="nav-link text-white"><i class="fas fa-user-shield text-white" style="margin-right:5px;"></i> {{ Auth::user()->name }}</li>
+      <li class="nav-link text-white"> {{ Auth::user()->name }}<i class="fas fa-user-shield text-white" style="margin-left:5px;"></i></li>
       <li class="nav-item d-none d-sm-inline-block">
         <a class="nav-link text-white" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout<i style="margin-left:5px; padding:2px;" class="fas fa-power-off text-white"></i></a>
       </li>
@@ -209,34 +209,7 @@ $('#reservationdate').datetimepicker({
               
               
             
-            </li>
-            {{-- aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa --}}
-            {{-- <li class="nav-item ">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-palette"></i>
-                <p>
-                  Bobines
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{route('allbobines')}}" class="nav-link ">
-                    <i class="nav-icon fas fa-list-alt"></i>
-                    <p>Stock Bobines</p>
-                  </a>
-                </li>
-              </ul>
-              <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="{{route('addbobine')}}" class="nav-link ">
-                      <i class="nav-icon fas fa-plus"></i>
-                      <p>Add Bobine</p>
-                    </a>
-                  </li>
-                </ul>
-            </li> --}}
-            
+            </li> 
             <li class="nav-item ">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
@@ -378,6 +351,35 @@ $('#reservationdate').datetimepicker({
                     </li>
                   </ul>
               </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item ">
+                  <a href="#" class="nav-link ">
+                    <i class="nav-icon fas fa-film"></i>
+                    <p>
+                      Film Plastique
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{route('allfilms')}}" class="nav-link ">
+                        <i class="nav-icon fas fa-list-alt"></i>
+                        <p>Plastic Stock  </p>
+                      </a>
+                    </li>
+                  </ul>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{route('addfilm')}}" class="nav-link ">
+                        <i class="nav-icon fas fa-plus"></i>
+                        <p>Add To Stock</p>
+                      </a>
+                    </li>
+                  </ul>
+                  {{-- Mecanicien --}}
+                  
+              </ul>
+           
               
             
             </li>

@@ -2,6 +2,7 @@
 use App\Http\Controllers\Admin\AdhesiveController;
 use App\Http\Controllers\Admin\AttendenceController;
 use App\Http\Controllers\admin\BobineController;
+use App\Http\Controllers\Admin\FilmsController;
 use App\Http\Controllers\admin\ReBobineController;
 use App\Http\Controllers\Admin\ElectricienController;
 use App\Http\Controllers\Admin\EmployeeController;
@@ -159,6 +160,16 @@ Route::controller(FrangesController::class)->group(function () {
     Route::get('/admin/delete-frange/{id}', 'DeleteFrange')->name('deletefrange');
     Route::put('/admin/update-frange/{id}', 'UpdateFrange')->name('updatefrange');
     Route::get('/admin/show-frange/{id}', 'ShowFrange')->name('showfrange');
+});
+
+Route::controller(FilmsController::class)->group(function () {
+    Route::get('/admin/all-films', 'Index')->name('allfilms');
+    Route::get('/admin/add-film', 'Addfilm')->name('addfilm');
+    Route::post('/admin/store-film', 'Storefilm')->name('storefilm');
+    Route::get('/admin/edit-film/{id}', 'Editfilm')->name('editfilm');
+    Route::get('/admin/delete-film/{id}', 'Deletefilm')->name('deletefilm');
+    Route::put('/admin/update-film/{id}', 'Updatefilm')->name('updatefilm');
+    Route::get('/admin/show-film/{id}', 'Showfilm')->name('showfilm');
 });
 
 require __DIR__.'/auth.php';
