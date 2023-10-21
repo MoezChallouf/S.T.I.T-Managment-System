@@ -46,6 +46,7 @@
           <th>Nom</th>
           <th>Quantité Disponible</th>
           <th>Quantité Consommée</th>
+          <th class="text-center">Reste en Stock</th>
           <th>Status</th>
           <th class="text-center">Date</th>
           <th class="text-center">Action</th>
@@ -59,6 +60,7 @@
           <td>{{$film->nom}}</td>
           <td class="text-center">{{$film->inQty}}</td>
           <td class="text-center">{{$film->outQty}}</td>
+          <td class="text-center">{{$film->total}}</td>
           <td style="color: {{ $film->status === 'Epuisé' ? 'red' : 'green' }};" class="font-weight-bold ">{{ $film->status }}</td>
           <td class="text-center">{{{$film->date}}}</td>
           <td class="text-center">

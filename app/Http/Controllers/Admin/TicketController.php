@@ -22,17 +22,23 @@ class TicketController extends Controller
             'nom' => 'required|string',
             'type' => 'required|string',
             'usine' => 'required|string',
-            'inQty' => 'required|integer',
-            'outQty' => 'required|integer',
+            'inQty' => 'required',
+            'outQty' => 'required',
             'date' => 'required|date',
             
         ]);
     
 
-        $status = $validatedData['inQty'] <= $validatedData['outQty'] ? 'Epuisé' : 'En Stock';
+        $total = $validatedData['inQty'] - $validatedData['outQty'];
 
+        // Add the total to the validated data
+        $validatedData['total'] = $total;
+        
+        $status = ($total <= 0) ? 'Epuisé' : 'En Stock';
+        
         // Add the status to the validated data
         $validatedData['status'] = $status;
+
 
         // Create a new product instance and populate it with the validated data
         $ticket = new Ticket ($validatedData);
@@ -63,14 +69,20 @@ class TicketController extends Controller
         'nom' => 'required|string',
         'type' => 'required|string',
         'usine' => 'required|string',
-        'inQty' => 'required|integer',
-        'outQty' => 'required|integer',
+        'inQty' => 'required',
+        'outQty' => 'required',
         'date' => 'required|date',
     ]); 
 
-    $status = $validatedData['inQty'] >= $validatedData['outQty'] ? 'En Stock' : 'Epuisé';
-    // Add the status to the validated data
-    $validatedData['status'] = $status;
+    $total = $validatedData['inQty'] - $validatedData['outQty'];
+
+        // Add the total to the validated data
+        $validatedData['total'] = $total;
+        
+        $status = ($total <= 0) ? 'Epuisé' : 'En Stock';
+        
+        // Add the status to the validated data
+        $validatedData['status'] = $status;
 
     $ticket = Ticket::findOrFail($id);
     // Update the product with the validated data, including the status

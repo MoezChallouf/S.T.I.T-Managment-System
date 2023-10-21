@@ -18,8 +18,9 @@ class CreatePiecesTable extends Migration
             $table->String('usine');
             $table->String('nom');
             $table->string('references');
-            $table->integer('inQty');
-            $table->integer('outQty');
+            $table->float('inQty');
+            $table->float('outQty');
+            $table->float('total');
             $table->string('date');
             $table->enum('status', ['En Stock', 'Epuisé'])->default('En Stock');
             $table->timestamps();

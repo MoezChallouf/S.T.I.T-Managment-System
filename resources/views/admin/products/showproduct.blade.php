@@ -107,7 +107,18 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="row ">
+                                <div class="row">
+                                    <div class="col-md-5 col-5">
+                                        <i class="fas fa-cubes text-indigo"></i>
+                                        <strong class="margin-10px-left xs-margin-four-left text-indigo">Reste En Stock:</strong>
+                                    </div>
+                                    <div class="col-md-7 col-7">
+                                        <p>{{$product->total}}</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
                                     <div class="col-md-5 col-5">
                                         <i class="fas fa-clock text-gray" ></i>
                                         <strong class="margin-10px-left xs-margin-four-left text-gray">Date de Fabrication: </strong>

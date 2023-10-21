@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 
-<div style="padding: 10px 150px">
+<div style="padding: 10px 100px">
     <!-- Content Header (Page header) -->
     <section class="content-header">
     <div class="container-fluid">
@@ -77,6 +77,7 @@
         <th class="text-center">Etat</th>
         <th>Quantité Disponible En KG</th>
         <th>Quantité Consommée En KG</th>
+        <th class="text-center">Reste en Stock</th>
         <th>Status</th>
         <th class="text-center">Date</th>
         <th class="text-center">Action</th>
@@ -92,6 +93,7 @@
         <td class="text-center">{{$frange->frange}}</td>
         <td class="text-center">{{$frange->inQty}} KG</td>
         <td class="text-center">{{$frange->outQty}} KG</td>
+        <td class="text-center">{{$frange->total}} KG</td>
         <td style="color: {{ $frange->status === 'Epuisé' ? 'red' : 'green' }};" class="font-weight-bold ">{{ $frange->status }}</td>
         <td class="text-center">{{{$frange->date}}}</td>
         <td class="text-center">

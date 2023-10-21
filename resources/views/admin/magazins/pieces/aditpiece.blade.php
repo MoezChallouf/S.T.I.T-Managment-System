@@ -37,7 +37,7 @@
                 <div class="form-group">
                     <label>Nom Piéce</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="nom de la piéce" name="name" value="{{$piece->color}}">
+                        <input type="text" class="form-control" placeholder="nom de la piéce" name="nom" value="{{$piece->nom}}">
                     </div>
                 </div>
 

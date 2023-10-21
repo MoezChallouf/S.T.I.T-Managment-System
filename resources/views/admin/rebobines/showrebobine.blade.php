@@ -9,7 +9,7 @@
     
         <div class="col-lg-4 col-md-5 xs-margin-30px-bottom">
             <div class="team-single-img">
-                <img src="{{asset('dist/img/rebobine.jpg')}}" alt="logo" style="width: 480px; height:300px; padding-right:120px;" >
+                <img src="{{asset('dist/img/rebobine.jpg')}}" alt="logo" style="width: 480px; height:320px; padding-right:120px;" >
             </div>
         </div>
         
@@ -63,6 +63,17 @@
                                     </div>
                                     <div class="col-md-7 col-7">
                                         <p>{{$rebobine->outQty}}</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-5 col-5">
+                                        <i class="fas fa-cubes text-indigo"></i>
+                                        <strong class="margin-10px-left xs-margin-four-left text-indigo">Reste En Stock:</strong>
+                                    </div>
+                                    <div class="col-md-7 col-7">
+                                        <p>{{$rebobine->total}}</p>
                                     </div>
                                 </div>
                             </li>

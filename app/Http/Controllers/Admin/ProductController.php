@@ -37,8 +37,13 @@ class ProductController extends Controller
         $validatedData['image'] = $imagePath;
     }
 
-    $status = $validatedData['inQty'] <= $validatedData['outQty'] ? 'Epuisé' : 'En Stock';
+    $total = $validatedData['inQty'] - $validatedData['outQty'];
 
+    // Add the total to the validated data
+    $validatedData['total'] = $total;
+    
+    $status = ($total <= 0) ? 'Epuisé' : 'En Stock';
+    
     // Add the status to the validated data
     $validatedData['status'] = $status;
 
@@ -73,8 +78,8 @@ class ProductController extends Controller
             'color' => 'required|string',
             'design' => 'required|string',
             'size' => 'required|string',
-            'inQty' => 'required|integer',
-            'outQty' => 'required|integer',
+            'inQty' => 'required',
+            'outQty' => 'required',
             'date' => 'required|date',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
 
@@ -100,8 +105,13 @@ class ProductController extends Controller
             Storage::delete('public/' . $imagePathToDelete);
         }
 
-        $status = $validatedData['inQty'] <= $validatedData['outQty'] ? 'Epuisé' : 'En Stock';
+        $total = $validatedData['inQty'] - $validatedData['outQty'];
 
+        // Add the total to the validated data
+        $validatedData['total'] = $total;
+        
+        $status = ($total <= 0) ? 'Epuisé' : 'En Stock';
+        
         // Add the status to the validated data
         $validatedData['status'] = $status;
 

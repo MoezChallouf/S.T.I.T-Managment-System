@@ -11,25 +11,30 @@ class FilmsController extends Controller
     public function Index()
     { 
         $films = Film::all();
-        return view('admin\magazins\films\allfilms',compact('films'));
+        return view('admin.magazins.films.allfilms',compact('films'));
     }
     public function AddFilm()
     {
-        return view('admin\magazins\films\addfilm');
+        return view('admin.magazins.films.addfilm');
     }
     public function StoreFilm(Request $request){
         $validatedData = $request->validate([
             'nom' => 'required|string',
             'usine' => 'required|string',
-            'inQty' => 'required|integer',
-            'outQty' => 'required|integer',
+            'inQty' => 'required',
+            'outQty' => 'required',
             'date' => 'required|date',
             
         ]);
     
 
-        $status = $validatedData['inQty'] <= $validatedData['outQty'] ? 'Epuisé' : 'En Stock';
+        $total = $validatedData['inQty'] - $validatedData['outQty'];
 
+        // Add the total to the validated data
+        $validatedData['total'] = $total;
+        
+        $status = ($total <= 0) ? 'Epuisé' : 'En Stock';
+        
         // Add the status to the validated data
         $validatedData['status'] = $status;
 
@@ -46,7 +51,7 @@ class FilmsController extends Controller
     public function EditFilm($id){
 
         $film = Film::findOrFail($id);
-        return view ("admin\magazins\films\aditfilm", compact('film'));
+        return view ('admin.magazins.films.editfilm', compact('film'));
     }
 
     public function DeleteFilm($id)
@@ -67,9 +72,17 @@ class FilmsController extends Controller
         'date' => 'required|date',
     ]); 
 
-    $status = $validatedData['inQty'] >= $validatedData['outQty'] ? 'En Stock' : 'Epuisé';
+
+    $total = $validatedData['inQty'] - $validatedData['outQty'];
+
+    // Add the total to the validated data
+    $validatedData['total'] = $total;
+    
+    $status = ($total <= 0) ? 'Epuisé' : 'En Stock';
+    
     // Add the status to the validated data
     $validatedData['status'] = $status;
+    
 
     $film = Film::findOrFail($id);
     // Update the product with the validated data, including the status
@@ -81,6 +94,7 @@ class FilmsController extends Controller
     public function ShowFilm($id)
     {
         $film = Film::findOrFail($id);
-        return view('admin\magazins\films\showfilm', compact('film'));
+        return view('admin.magazins.films.showfilm', compact('film'));
+        
     }
 }

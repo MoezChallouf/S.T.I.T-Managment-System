@@ -11,11 +11,11 @@ class TourneurController extends Controller
     public function Index()
     { 
         $tourneurs = Tourneur::all();
-        return view('admin.piéces.tourneur.alltourneurs',compact('tourneurs'));
+        return view('admin.maintenance.tourneur.alltourneurs',compact('tourneurs'));
     }
     public function AddTourneur()
     {
-        return view('admin.piéces.tourneur.addtourneur');
+        return view('admin.maintenance.tourneur.addtourneur');
     }
 
     public function StoreTourneur(Request $request){
@@ -49,7 +49,7 @@ class TourneurController extends Controller
     public function ShowTourneur($id)
     {
         $tourneur = Tourneur::findOrFail($id);
-        return view('admin.piéces.tourneur.showtourneur',compact('tourneur'));
+        return view('admin.maintenance.tourneur.showtourneur',compact('tourneur'));
     }
 
     public function UpdateTourneur(Request $request, $id)
@@ -84,6 +84,6 @@ class TourneurController extends Controller
 
     public function EditTourneur ($id){
         $tourneur = Tourneur::findOrFail($id);
-        return view ("admin/piéces/tourneur/edittourneur", compact('tourneur'));
+        return view ("admin/maintenance/tourneur/edittourneur", compact('tourneur'));
     }
 }

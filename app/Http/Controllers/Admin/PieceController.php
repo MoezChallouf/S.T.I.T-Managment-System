@@ -29,11 +29,15 @@ class PieceController extends Controller
         ]);
        
 
-        $status = $validatedData['inQty'] <= $validatedData['outQty'] ? 'Epuisé' : 'En Stock';
+        $total = $validatedData['inQty'] - $validatedData['outQty'];
 
+        // Add the total to the validated data
+        $validatedData['total'] = $total;
+        
+        $status = ($total <= 0) ? 'Epuisé' : 'En Stock';
+        
         // Add the status to the validated data
         $validatedData['status'] = $status;
-
         // Create a new product instance and populate it with the validated data
         $piece = new Piece ($validatedData);
         
@@ -46,7 +50,7 @@ class PieceController extends Controller
 
     public function EditPiece ($id){
         $piece = Piece::findOrFail($id);
-        return view ("admin\magazins\pieces\editpiece", compact('piece'));
+        return view ("admin\magazins\pieces\aditpiece", compact('piece'));
     }
 
     public function DeletPiece($id)
@@ -68,9 +72,16 @@ class PieceController extends Controller
         'date' => 'required|date',
     ]); 
 
-    $status = $validatedData['inQty'] >= $validatedData['outQty'] ? 'En Stock' : 'Epuisé';
+    $total = $validatedData['inQty'] - $validatedData['outQty'];
+
+    // Add the total to the validated data
+    $validatedData['total'] = $total;
+    
+    $status = ($total <= 0) ? 'Epuisé' : 'En Stock';
+    
     // Add the status to the validated data
     $validatedData['status'] = $status;
+    
     $piece = Piece::findOrFail($id);
     // Update the product with the validated data, including the status
     $piece->update($validatedData);

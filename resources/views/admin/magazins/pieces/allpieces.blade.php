@@ -47,6 +47,7 @@
           <th>Nom</th>
           <th>Quantité Disponible</th>
           <th>Quantité Consommée</th>
+          <th class="text-center">Reste en Stock</th>
           <th>Status</th>
           <th class="text-center">Date</th>
           <th class="text-center">Action</th>
@@ -59,8 +60,9 @@
           <td>{{$piece->usine}}</td>
           <td>{{$piece->references}}</td>
           <td>{{$piece->nom}}</td>
-          <td class="text-center">{{$piece->inQty}} KG</td>
-          <td class="text-center">{{$piece->outQty}} KG</td>
+          <td class="text-center">{{$piece->inQty}}</td>
+          <td class="text-center">{{$piece->outQty}}</td>
+          <td class="text-center">{{$piece->total}}</td>
           <td style="color: {{ $piece->status === 'Epuisé' ? 'red' : 'green' }};" class="font-weight-bold ">{{ $piece->status }}</td>
           <td class="text-center">{{{$piece->date}}}</td>
           <td class="text-center">

@@ -164,12 +164,12 @@ Route::controller(FrangesController::class)->group(function () {
 
 Route::controller(FilmsController::class)->group(function () {
     Route::get('/admin/all-films', 'Index')->name('allfilms');
-    Route::get('/admin/add-film', 'Addfilm')->name('addfilm');
-    Route::post('/admin/store-film', 'Storefilm')->name('storefilm');
-    Route::get('/admin/edit-film/{id}', 'Editfilm')->name('editfilm');
-    Route::get('/admin/delete-film/{id}', 'Deletefilm')->name('deletefilm');
-    Route::put('/admin/update-film/{id}', 'Updatefilm')->name('updatefilm');
-    Route::get('/admin/show-film/{id}', 'Showfilm')->name('showfilm');
+    Route::get('/admin/add-film', 'AddFilm')->name('addfilm');
+    Route::post('/admin/store-film', 'StoreFilm')->name('storefilm');
+    Route::get('/admin/edit-film/{id}', 'EditFilm')->name('editfilm');
+    Route::get('/admin/delete-film/{id}', 'DeleteFilm')->name('deletefilm');
+    Route::put('/admin/update-film/{id}', 'UpdateFilm')->name('updatefilm');
+    Route::get('/admin/show-film/{id}', 'ShowFilm')->name('showfilm');
 });
 
 require __DIR__.'/auth.php';

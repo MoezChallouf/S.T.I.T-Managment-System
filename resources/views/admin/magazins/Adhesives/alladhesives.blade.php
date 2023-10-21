@@ -47,6 +47,7 @@
           <th>Nom</th>
           <th>Quantité Disponible</th>
           <th>Quantité Consommée</th>
+        <th class="text-center">Reste en Stock</th>
           <th>Status</th>
           <th class="text-center">Date</th>
           <th class="text-center">Action</th>
@@ -59,8 +60,9 @@
           <td>{{$adhesive->usine}}</td>
           <td>{{$adhesive->type}}</td>
           <td>{{$adhesive->nom}}</td>
-          <td class="text-center">{{$adhesive->inQty}} KG</td>
-          <td class="text-center">{{$adhesive->outQty}} KG</td>
+          <td class="text-center">{{$adhesive->inQty}}</td>
+          <td class="text-center">{{$adhesive->outQty}}</td>
+          <td class="text-center">{{$adhesive->total}}</td>
           <td style="color: {{ $adhesive->status === 'Epuisé' ? 'red' : 'green' }};" class="font-weight-bold ">{{ $adhesive->status }}</td>
           <td class="text-center">{{{$adhesive->date}}}</td>
           <td class="text-center">

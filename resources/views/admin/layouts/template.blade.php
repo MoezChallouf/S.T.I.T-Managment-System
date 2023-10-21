@@ -612,6 +612,7 @@ $('#reservationdate').datetimepicker({
   initializeDataTable("#mecanicien");
   initializeDataTable("#ticket");
   initializeDataTable("#adhesive");
+  initializeDataTable("#film");
 
 
 </script>

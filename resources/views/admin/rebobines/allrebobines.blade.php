@@ -68,6 +68,7 @@
         <th>Type</th>
         <th>Quantité Disponible En KG</th>
         <th>Quantité Consommée En KG</th>
+        <th class="text-center">Reste en Stock</th>
         <th>Status</th>
         <th class="text-center">Date</th>
         <th class="text-center">Action</th>
@@ -82,6 +83,7 @@
         <td class="text-center">{{$rebobine->type}}</td>
         <td class="text-center">{{$rebobine->inQty}} KG</td>
         <td class="text-center">{{$rebobine->outQty}} KG</td>
+        <td class="text-center">{{$rebobine->total}} KG</td>
         <td style="color: {{ $rebobine->status === 'Epuisé' ? 'red' : 'green' }};" class="font-weight-bold ">{{ $rebobine->status }}</td>
         <td class="text-center">{{{$rebobine->date}}}</td>
         <td class="text-center">

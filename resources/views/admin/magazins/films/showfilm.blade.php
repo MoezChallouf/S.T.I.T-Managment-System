@@ -54,6 +54,17 @@
                                 </div>
                             </li>
                             <li>
+                                <div class="row">
+                                    <div class="col-md-5 col-5">
+                                        <i class="fas fa-cubes text-pink"></i>
+                                        <strong class="margin-10px-left xs-margin-four-left text-pink">Reste en Stock:</strong>
+                                    </div>
+                                    <div class="col-md-7 col-7">
+                                        <p>{{$film->total}}</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
                                 <div class="row ">
                                     <div class="col-md-5 col-5">
                                         <i class="fas fa-clock text-gray" ></i>

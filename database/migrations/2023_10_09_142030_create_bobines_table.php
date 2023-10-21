@@ -19,8 +19,9 @@ class CreateBobinesTable extends Migration
             $table->string('references');
             $table->String('color');
             $table->String('type');
-            $table->integer('inQty');
-            $table->integer('outQty');
+            $table->float('inQty');
+            $table->float('outQty');
+            $table->float('total');
             $table->string('date');
             $table->enum('status', ['En Stock', 'Epuisé'])->default('En Stock');
             $table->string('image')->nullable();

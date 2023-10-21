@@ -12,6 +12,7 @@ class BobineController extends Controller
     public function Index()
     { 
         $bobines = Bobine::all();
+       
         return view('admin.bobines.allbobines',compact('bobines'));
     }
     public function AddBobine()
@@ -24,8 +25,8 @@ class BobineController extends Controller
             'color' => 'required|string',
             'usine' => 'required|string',
             'type' => 'required|string',
-            'inQty' => 'required|integer',
-            'outQty' => 'required|integer',
+            'inQty' => 'required',
+            'outQty' => 'required',
             'date' => 'required|date',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
             
@@ -34,9 +35,13 @@ class BobineController extends Controller
             $imagePath = $request->file('image')->store('image', 'public');
             $validatedData['image'] = $imagePath;
         }
+        $total = $validatedData['inQty'] - $validatedData['outQty'];
 
-        $status = $validatedData['inQty'] <= $validatedData['outQty'] ? 'Epuisé' : 'En Stock';
-
+        // Add the total to the validated data
+        $validatedData['total'] = $total;
+        
+        $status = ($total <= 0) ? 'Epuisé' : 'En Stock';
+        
         // Add the status to the validated data
         $validatedData['status'] = $status;
 
@@ -70,8 +75,8 @@ class BobineController extends Controller
         'color' => 'required|string',
         'usine' => 'required|string',
         'type' => 'required|string',
-        'inQty' => 'required|integer',
-        'outQty' => 'required|integer',
+        'inQty' => 'required',
+        'outQty' => 'required',
         'date' => 'required|date',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
     ]);
@@ -96,9 +101,19 @@ class BobineController extends Controller
         Storage::delete('public/' . $imagePathToDelete);
     }
 
-    $status = $validatedData['inQty'] >= $validatedData['outQty'] ? 'En Stock' : 'Epuisé';
-    // Add the status to the validated data
-    $validatedData['status'] = $status;
+    
+
+    $total = $validatedData['inQty'] - $validatedData['outQty'];
+
+// Add the total to the validated data
+$validatedData['total'] = $total;
+
+$status = ($total <= 0) ? 'Epuisé' : 'En Stock';
+
+// Add the status to the validated data
+$validatedData['status'] = $status;
+
+    
 
     // Update the product with the validated data, including the status
     $bobine->update($validatedData);

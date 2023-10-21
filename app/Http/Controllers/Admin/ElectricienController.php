@@ -11,11 +11,11 @@ class ElectricienController extends Controller
     public function Index()
     { 
         $electriciens = Electricien::all();
-        return view('admin.piéces.electricien.allelectriciens',compact('electriciens'));
+        return view('admin.maintenance.electricien.allelectriciens',compact('electriciens'));
     }
     public function AddElectricien()
     {
-        return view('admin.piéces.electricien.addelectricien');
+        return view('admin.maintenance.electricien.addelectricien');
     }
 
     public function StoreElectricien(Request $request){
@@ -41,7 +41,7 @@ class ElectricienController extends Controller
     public function ShowElectricien($id)
     {
         $electricien = Electricien::findOrFail($id);
-        return view('admin.piéces.electricien.showelectricien',compact('electricien'));
+        return view('admin.maintenance.electricien.showelectricien',compact('electricien'));
     }
 
     public function UpdateElectricien(Request $request, $id)
@@ -68,6 +68,6 @@ class ElectricienController extends Controller
 
     public function EditElectricien ($id){
         $electricien = Electricien::findOrFail($id);
-        return view ("admin/piéces/electricien/editelectricien", compact('electricien'));
+        return view ("admin/maintenance/electricien/editelectricien", compact('electricien'));
     }
 }

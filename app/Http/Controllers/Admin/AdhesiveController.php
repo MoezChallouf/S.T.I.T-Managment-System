@@ -11,11 +11,11 @@ class AdhesiveController extends Controller
     public function Index()
     { 
         $adhesives = Adhesive::all();
-        return view('admin\magazins\adhesives\alladhesives',compact('adhesives'));
+        return view('admin.magazins.adhesives.alladhesives',compact('adhesives'));
     }
     public function AddAdhesive()
     {
-        return view('admin\magazins\adhesives\addadhesive');
+        return view('admin.magazins.adhesives.addadhesive');
     }
     public function StoreAdhesive(Request $request){
         $validatedData = $request->validate([
@@ -29,8 +29,13 @@ class AdhesiveController extends Controller
         ]);
     
 
-        $status = $validatedData['inQty'] <= $validatedData['outQty'] ? 'Epuisé' : 'En Stock';
+        $total = $validatedData['inQty'] - $validatedData['outQty'];
 
+        // Add the total to the validated data
+        $validatedData['total'] = $total;
+        
+        $status = ($total <= 0) ? 'Epuisé' : 'En Stock';
+        
         // Add the status to the validated data
         $validatedData['status'] = $status;
 
@@ -47,7 +52,7 @@ class AdhesiveController extends Controller
     public function EditAdhesive($id){
 
         $adhesive = Adhesive::findOrFail($id);
-        return view ("admin\magazins\adhesives\aditadhesive", compact('adhesive'));
+        return view ('admin.magazins.adhesives.editadhesive', compact('adhesive'));
     }
 
     public function DeleteAdhesive($id)
@@ -69,9 +74,15 @@ class AdhesiveController extends Controller
         'date' => 'required|date',
     ]); 
 
-    $status = $validatedData['inQty'] >= $validatedData['outQty'] ? 'En Stock' : 'Epuisé';
-    // Add the status to the validated data
-    $validatedData['status'] = $status;
+    $total = $validatedData['inQty'] - $validatedData['outQty'];
+
+        // Add the total to the validated data
+        $validatedData['total'] = $total;
+        
+        $status = ($total <= 0) ? 'Epuisé' : 'En Stock';
+        
+        // Add the status to the validated data
+        $validatedData['status'] = $status;
 
     $adhesive = Adhesive::findOrFail($id);
     // Update the product with the validated data, including the status
@@ -83,6 +94,6 @@ class AdhesiveController extends Controller
     public function ShowAdhesive($id)
     {
         $adhesive = Adhesive::findOrFail($id);
-        return view('admin\magazins\adhesives\showadhesive', compact('adhesive'));
+        return view('admin.magazins.adhesives.showadhesive', compact('adhesive'));
     }
 }

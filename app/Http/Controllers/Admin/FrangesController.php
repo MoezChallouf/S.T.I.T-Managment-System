@@ -24,8 +24,8 @@ class FrangesController extends Controller
             'color' => 'required|string',
             'usine' => 'required|string',
             'frange' => 'required|string',
-            'inQty' => 'required|integer',
-            'outQty' => 'required|integer',
+            'inQty' => 'required',
+            'outQty' => 'required',
             'date' => 'required|date',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
             
@@ -35,8 +35,13 @@ class FrangesController extends Controller
             $validatedData['image'] = $imagePath;
         }
 
-        $status = $validatedData['inQty'] <= $validatedData['outQty'] ? 'Epuisé' : 'En Stock';
+        $total = $validatedData['inQty'] - $validatedData['outQty'];
 
+        // Add the total to the validated data
+        $validatedData['total'] = $total;
+        
+        $status = ($total <= 0) ? 'Epuisé' : 'En Stock';
+        
         // Add the status to the validated data
         $validatedData['status'] = $status;
 
@@ -70,8 +75,8 @@ class FrangesController extends Controller
             'color' => 'required|string',
             'usine' => 'required|string',
             'frange' => 'required|string',
-            'inQty' => 'required|integer',
-            'outQty' => 'required|integer',
+            'inQty' => 'required',
+            'outQty' => 'required',
             'date' => 'required|date',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048' // Change 'frange' to 'image'
         ]);
@@ -99,7 +104,13 @@ class FrangesController extends Controller
             $frange->save();
         }
     
-        $status = $validatedData['inQty'] >= $validatedData['outQty'] ? 'En Stock' : 'Epuisé';
+        $total = $validatedData['inQty'] - $validatedData['outQty'];
+
+        // Add the total to the validated data
+        $validatedData['total'] = $total;
+        
+        $status = ($total <= 0) ? 'Epuisé' : 'En Stock';
+        
         // Add the status to the validated data
         $validatedData['status'] = $status;
     

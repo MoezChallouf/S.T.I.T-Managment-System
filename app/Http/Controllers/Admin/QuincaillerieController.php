@@ -11,11 +11,11 @@ class QuincaillerieController extends Controller
     public function Index()
     { 
         $quincailleries = Quincaillerie::all();
-        return view('admin.piéces.quincaillerie.allquincailleries',compact('quincailleries'));
+        return view('admin.maintenance.quincaillerie.allquincailleries',compact('quincailleries'));
     }
     public function AddQuincaillerie()
     {
-        return view('admin.piéces.quincaillerie.addquincaillerie');
+        return view('admin.maintenance.quincaillerie.addquincaillerie');
     }
 
     public function StoreQuincaillerie(Request $request){
@@ -47,7 +47,7 @@ class QuincaillerieController extends Controller
     public function Showquincaillerie($id)
     {
         $quincaillerie = Quincaillerie::findOrFail($id);
-        return view('admin.piéces.quincaillerie.showquincaillerie',compact('quincaillerie'));
+        return view('admin.maintenance.quincaillerie.showquincaillerie',compact('quincaillerie'));
     }
 
     public function UpdateQuincaillerie(Request $request, $id)
@@ -80,6 +80,6 @@ class QuincaillerieController extends Controller
 
     public function Editquincaillerie ($id){
         $quincaillerie = Quincaillerie::findOrFail($id);
-        return view ("admin/piéces/quincaillerie/editquincaillerie", compact('quincaillerie'));
+        return view ("admin/maintenance/quincaillerie/editquincaillerie", compact('quincaillerie'));
     }
 }

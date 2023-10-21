@@ -11,11 +11,11 @@ class MecanicienController extends Controller
     public function Index()
     { 
         $mecaniciens = Mecanicien::all();
-        return view('admin.piéces.mecanicien.allmecaniciens',compact('mecaniciens'));
+        return view('admin.maintenance.mecanicien.allmecaniciens',compact('mecaniciens'));
     }
     public function AddMecanicien()
     {
-        return view('admin.piéces.mecanicien.addmecanicien');
+        return view('admin.maintenance.mecanicien.addmecanicien');
     }
 
     public function StoreMecanicien(Request $request){
@@ -43,7 +43,7 @@ class MecanicienController extends Controller
     public function ShowMecanicien($id)
     {
         $mecanicien = Mecanicien::findOrFail($id);
-        return view('admin.piéces.mecanicien.showmecanicien',compact('mecanicien'));
+        return view('admin.maintenance.mecanicien.showmecanicien',compact('mecanicien'));
     }
 
     public function UpdateMecanicien(Request $request, $id)
@@ -72,6 +72,6 @@ class MecanicienController extends Controller
 
     public function EditMecanicien ($id){
         $mecanicien = Mecanicien::findOrFail($id);
-        return view ("admin/piéces/mecanicien/editmecanicien", compact('mecanicien'));
+        return view ("admin/maintenance/mecanicien/editmecanicien", compact('mecanicien'));
     }
 }

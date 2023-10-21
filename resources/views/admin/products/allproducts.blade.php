@@ -78,6 +78,7 @@
           <th>Couleur</th>
           <th>Quantité Disponible</th>
           <th>Quantité Vendu</th>
+          <th class="text-center">Qty en Stock</th>
           <th>Status</th>
           <th>Date de fabrication</th>
           <th>Action</th>
@@ -94,6 +95,7 @@
           <td class="text-center">{{$product->color}}</td>
           <td class="text-center">{{$product->inQty}}</td>
           <td class="text-center">{{$product->outQty}}</td>
+          <td class="text-center">{{$product->total}}</td>
           <td style="color: {{ $product->status === 'Epuisé' ? 'red' : 'green' }};" class="font-weight-bold ">{{ $product->status }}</td>
           <td class="text-center">{{{$product->date}}}</td>
           <td>
