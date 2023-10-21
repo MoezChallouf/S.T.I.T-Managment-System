@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\MecanicienController;
 use App\Http\Controllers\Admin\PieceController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\Admin\QuincaillerieController;
+use App\Http\Controllers\Admin\RibbonsController;
 use App\Http\Controllers\Admin\TourneurController;
 use App\Http\Controllers\Admin\TicketController;
 use App\Models\Adhesive;
@@ -171,5 +172,15 @@ Route::controller(FilmsController::class)->group(function () {
     Route::put('/admin/update-film/{id}', 'UpdateFilm')->name('updatefilm');
     Route::get('/admin/show-film/{id}', 'ShowFilm')->name('showfilm');
 });
+Route::controller(RibbonsController::class)->group(function () {
+    Route::get('/admin/all-ribbons', 'Index')->name('allribbons');
+    Route::get('/admin/add-ribbon', 'AddRibbon')->name('addribbon');
+    Route::post('/admin/store-ribbon', 'StoreRibbon')->name('storeribbon');
+    Route::get('/admin/edit-ribbon/{id}', 'EditRibbon')->name('editribbon');
+    Route::get('/admin/delete-ribbon/{id}', 'DeleteRibbon')->name('deleteribbon');
+    Route::put('/admin/update-ribbon/{id}', 'UpdateRibbon')->name('updateribbon');
+    Route::get('/admin/show-ribbon/{id}', 'ShowRibbon')->name('showribbon');
+});
+
 
 require __DIR__.'/auth.php';

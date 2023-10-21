@@ -206,7 +206,32 @@ $('#reservationdate').datetimepicker({
                     </li>
                   </ul>
               </ul>
-              
+              <li class="nav-item ">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-ribbon"></i>
+                  <p>
+                    
+                    Ribbons
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{route('allribbons')}}" class="nav-link ">
+                      <i class="nav-icon fas fa-list-alt"></i>
+                      <p>Stock Ribbon</p>
+                    </a>
+                  </li>
+                </ul>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{route('addribbon')}}" class="nav-link ">
+                        <i class="nav-icon fas fa-plus"></i>
+                        <p>Add Ribbon</p>
+                      </a>
+                    </li>
+                  </ul>
+              </li>
               
             
             </li> 
