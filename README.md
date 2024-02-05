@@ -1,64 +1,43 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<h1>Tunisian Carpet Industrial Company Management System</h1>
 
-## About Laravel
+<p>This repository contains the source code for a comprehensive management system tailored for Tunisian Carpet Industrial Company, built using Laravel Blade template and Bootstrap.</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<h2>Introduction</h2>
+<p>The Tunisian Carpet Industrial Company Management System is designed to streamline various aspects of the company's operations, including inventory management, sales tracking, employee management, and more. Developed using Laravel, it provides a user-friendly interface and robust functionality to enhance efficiency and productivity within the organization.</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<h2>Features</h2>
+<ul>
+    <li><strong>Inventory Management:</strong> Keep track of available carpet products, manage stock levels, and receive notifications for low stock items.</li>
+    <li><strong>Sales Tracking:</strong> Record sales transactions, generate invoices, and track customer orders.</li>
+    <li><strong>Employee Management:</strong> Manage employee information, assign roles and permissions, and track attendance.</li>
+    <li><strong>Reporting:</strong> Generate custom reports on sales, inventory, and employee performance.</li>
+    <li><strong>User Authentication:</strong> Secure login system with role-based access control to protect sensitive information.</li>
+    <li><strong>Responsive Design:</strong> Utilizes Bootstrap framework for a responsive and mobile-friendly interface.</li>
+</ul>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<h2>Installation</h2>
+<ol>
+    <li>Clone the repository to your local machine.</li>
+    <li>Navigate to the project directory.</li>
+    <li>Install dependencies via Composer.</li>
+    <li>Set up your environment variables by copying <code>.env.example</code> to <code>.env</code> and configuring the necessary settings.</li>
+    <li>Generate an application key.</li>
+    <li>Run migrations and seed the database.</li>
+    <li>Start the development server.</li>
+</ol>
 
-## Learning Laravel
+<h2>Usage</h2>
+<ol>
+    <li>Open your web browser and navigate to the URL where the application is running.</li>
+    <li>Log in using your credentials.</li>
+    <li>Explore different modules and functionalities of the management system.</li>
+    <li>Enjoy managing Tunisian Carpet Industrial Company efficiently!</li>
+</ol>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<h2>Contributing</h2>
+<p>Contributions are welcome! If you find any bugs or have suggestions for improvements, feel free to submit a pull request or open an issue.</p>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<h2>License</h2>
+<p>This project is licensed under the <a href="LICENSE">MIT License</a>.</p>
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
