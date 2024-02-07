@@ -4,12 +4,11 @@
 <p>This repository contains the source code for a comprehensive management system tailored for Tunisian Carpet Industrial Company, built using Laravel Blade template and Bootstrap.</p>
 
 <h2>Introduction</h2>
-<p>The Tunisian Carpet Industrial Company Management System is designed to streamline various aspects of the company's operations, including inventory management, sales tracking, employee management, and more. Developed using Laravel, it provides a user-friendly interface and robust functionality to enhance efficiency and productivity within the organization.</p>
+<p>The Tunisian Carpet Industrial Company Management System is designed to streamline various aspects of the company's operations, including inventory management, employee management, and more. Developed using Laravel, it provides a user-friendly interface and robust functionality to enhance efficiency and productivity within the organization.</p>
 
 <h2>Features</h2>
 <ul>
     <li><strong>Inventory Management:</strong> Keep track of available carpet products, manage stock levels, and receive notifications for low stock items.</li>
-    <li><strong>Sales Tracking:</strong> Record sales transactions, generate invoices, and track customer orders.</li>
     <li><strong>Employee Management:</strong> Manage employee information, assign roles and permissions, and track attendance.</li>
     <li><strong>Reporting:</strong> Generate custom reports on sales, inventory, and employee performance.</li>
     <li><strong>User Authentication:</strong> Secure login system with role-based access control to protect sensitive information.</li>
